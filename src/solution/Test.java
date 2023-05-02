@@ -14,7 +14,7 @@ public class Test {
         dictionary.addWord("javascript");
         dictionary.addWord("internet");
 
-        List<String> hints = dictionary.findHints("java");
+        List<String> hints = dictionary.findHints("cat");
         hints.forEach(System.out::println);
     }
 }

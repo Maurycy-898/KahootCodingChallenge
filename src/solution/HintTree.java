@@ -57,18 +57,18 @@ public class HintTree {
      * @return list of words starting with provided query
      */
     public LinkedList<String> findHints(String query) {
-        if (query == null) return null;  // skip null words
-        if (query.equals("")) return null;  // skip empty words
-        if (query.contains(" ")) return null;  // skip word groups/sentences (optional)
+        LinkedList<String> hintList = new LinkedList<>();
+
+        if (query == null) return hintList;  // skip null words
+        if (query.equals("")) return hintList;  // skip empty words
+        if (query.contains(" ")) return hintList;  // skip word groups/sentences (optional)
 
         Character key = query.charAt(0);
-        if (!this.hintRoot.containsKey(key)) return null;
+        if (this.hintRoot.containsKey(key)) {
+            this.hintRoot.get(key).findHints(query, hintList);
+        }
 
-        LinkedList<String> hintList = new LinkedList<>();
-        this.hintRoot.get(key).findHints(query, hintList);
-
-        if (hintList.isEmpty()) return null;
-        else return hintList;
+        return hintList;
     }
 
 
