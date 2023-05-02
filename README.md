@@ -1,4 +1,5 @@
 # KahootCodingChallenge
+# Author: Maurycy Sosnowski
 Project with my sollution to the kahoot coding challenge. 
 
 I implemented tree like structure to find hints for given query in efficient way.
