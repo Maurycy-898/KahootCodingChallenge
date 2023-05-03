@@ -161,11 +161,15 @@ public class HintTree {
             }
             else if (this.storedText.length() < querySuffix.length()) {
                 String commonPrefix = longestCommonPrefix(querySuffix, this.storedText);
+                if (!this.storedText.equals(commonPrefix)) return;
+
                 String newSuffix = querySuffix.substring(commonPrefix.length());
                 String newPrefix = queryPrefix + commonPrefix;
 
                 Character key = newSuffix.charAt(0);
-                this.childrenMap.get(key).findHints(newPrefix, newSuffix, hintList);
+                if (this.childrenMap.containsKey(key)) {
+                    this.childrenMap.get(key).findHints(newPrefix, newSuffix, hintList);
+                }
             }
         }
 
@@ -184,8 +188,9 @@ public class HintTree {
             }
             else if (this.storedText.length() < query.length()) {
                 String queryPrefix = longestCommonPrefix(query, this.storedText);
-                String querySuffix = query.substring(queryPrefix.length());
+                if (!this.storedText.equals(queryPrefix)) return;
 
+                String querySuffix = query.substring(queryPrefix.length());
                 Character key = querySuffix.charAt(0);
                 if (this.childrenMap.containsKey(key)) {
                     this.childrenMap.get(key).findHints(queryPrefix, querySuffix, hintList);

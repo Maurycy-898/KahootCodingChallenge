@@ -10,11 +10,12 @@ public class Test {
         dictionary.addWord("cat");
         dictionary.addWord("car");
         dictionary.addWord("carpet");
+        dictionary.addWord("cactus");
         dictionary.addWord("java");
         dictionary.addWord("javascript");
         dictionary.addWord("internet");
 
-        List<String> hints = dictionary.findHints("cat");
+        List<String> hints = dictionary.findHints("crr");
         hints.forEach(System.out::println);
     }
 }
